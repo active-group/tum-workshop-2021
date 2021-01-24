@@ -2,20 +2,7 @@ cradle:
   stack:
     - path: "./src"
       component: "hearts:lib"
-
-    - path: "./app/Main.hs"
-      component: "hearts:exe:server"
-
-    - path: "./app/Args.hs"
-      component: "hearts:exe:server"
-
-    - path: "./app/Serialization.hs"
-      component: "hearts:exe:server"
-
-    - path: "./app/PlayerServer.hs"
-      component: "hearts:exe:server"
-
-    - path: "./app/TableServer.hs"
+    - path: "./app"
       component: "hearts:exe:server"
 #  if you use cabal: replace above stack configuration with the following one:
 #  cabal:
