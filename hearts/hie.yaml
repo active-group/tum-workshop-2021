@@ -1,7 +1,12 @@
 cradle:
-  cabal:
-    - component: "lib:hearts"
-      path: "./src"
-    - component: "exe:server"
-      path: "./app"
-
+  stack:
+    - path: "./src"
+      component: "hearts:lib"
+    - path: "./app"
+      component: "hearts:exe:server"
+#  if you use cabal: replace above stack configuration with the following one:
+#  cabal:
+#    - component: "lib:hearts"
+#      path: "./src"
+#    - component: "exe:server"
+#      path: "./app"
