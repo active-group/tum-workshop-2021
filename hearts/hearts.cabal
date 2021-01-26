@@ -8,7 +8,8 @@ author:              Mike Sperber
 maintainer:          michael.sperber@active-group.de
 
 library
-  exposed-modules: Cards, GameEvent, Table, Sync, EventSourcing, TableEventSourcing, Player
+  exposed-modules: Cards
+  -- GameEvent, Table, Sync, EventSourcing, TableEventSourcing, Player
   -- Concurrency
   other-modules: Teletype, Shuffle, MVar
   
