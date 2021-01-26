@@ -24,6 +24,9 @@ allRanks = [Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten,
             Jack, Queen, King, Ace]
 
 -- |Spielkarte
+-- data Card = Card Suit Rank
+-- suit (Card s _) = s
+-- rank (Card _ r) = r
 data Card = Card { suit :: Suit, rank :: Rank }
   deriving (Show, Eq, Ord)
 
@@ -102,4 +105,4 @@ leadingCardOfTrick :: Trick -> Card
 leadingCardOfTrick trick = snd (last trick)
 
 -- Hände der Spieler
-type PlayerHands  = Map Player Hand
+type PlayerHands = Map Player Hand
