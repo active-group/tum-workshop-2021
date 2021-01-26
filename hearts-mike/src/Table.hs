@@ -49,6 +49,9 @@ type Stack = Set Card
 -- eingezogene Karten, pro Spieler
 type PlayerStacks = Map Player Stack
 
+-- "Make illegal states unrepresentable."
+-- NOT:
+
 data TableState =
   TableState
   { tableStatePlayers :: [Player], -- wer dran ist, steht vorn
