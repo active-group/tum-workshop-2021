@@ -65,5 +65,9 @@ instance Monad DB where
     (>>=) = splice
     return = Return
 
-p1'' = do get 
+p1'' = do put "Mike" 25
+          x <- get "Mike"
+          put "Mike" (x + 17)
+          y <- get "Mike"
+          return y
 
