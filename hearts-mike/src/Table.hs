@@ -167,3 +167,27 @@ tableProcessEvent (IllegalCardPlayed player card) state = state
 tableProcessEvent (GameEnded player) state = state
 
 tableProcessCommand :: GameCommand -> TableState -> [GameEvent]
+tableProcessCommand (DealHands hands) state =
+  map (uncurry HandDealt) (Map.toList hands)
+tableProcessCommand (PlayCard player card) state = 
+  if playValid state player card
+  then
+    let event1 = LegalCardPlayed player card
+        state1 = tableProcessEvent event1 state
+    in if turnOver state1
+       then
+         let trick = tableStateTrick state1
+             trickTaker = whoTakesTrick trick
+             event2 = TrickTaken trickTaker trick
+             state2 = tableProcessEvent event2 state1
+             event3 = case gameOver state2 of
+                         Just winner -> GameEnded winner
+                         Nothing -> PlayerTurnChanged trickTaker
+         in [event1, event2, event3]
+       else
+         let event2 = PlayerTurnChanged (playerAfter state1 player)
+         in [event1, event2]
+  else
+    [IllegalCardPlayed player card]
+
+  
